@@ -1,26 +1,28 @@
-package org.howard.edu.lsp.assignment2;
+package org.howard.edu.lsp.assignment2.combination;
 
 import java.util.Vector;
 
 /**
- * The Class Combination.
+ * The Combination Class.
  */
 public class Combination {
 	/** The sum target. */
 	private int sumTarget;
 	/** The power set. */
-	private Vector<Vector<Integer>> powerSet  =
+	public Vector<Vector<Integer>> powerSet  =
 			new Vector<Vector<Integer>>();
 	/** The solution set. */
-	private Vector<Vector<Integer>> solutionSet =
+	public Vector<Vector<Integer>> solutionSet =
 			new Vector<Vector<Integer>>();
 	/**
 	 * Instantiates a new combination.
 	 *
-	 * @param sum the sum
-	 * @param nums the nums
+	 * @param sum the target sum for the Combination instance
+	 * @param nums the original set of numbers for the Combination instance
 	 */
-	public Combination(final int sum, final Vector<Integer> nums) {
+	public Combination(
+			final int sum, 
+			final Vector<Integer> nums) {
 		sumTarget = sum;
 		this.calculatePowerSet(nums);
 		this.calculateSolutionSet();
@@ -43,33 +45,34 @@ public class Combination {
 			final int subsetLength,
 			final Vector<Vector<Integer>> powerSubset) {
 		int originalSetLength = originalSet.size();
-		// SubsetLength being greater than originalSetLength
-		// should be invalid
+		// subsetLength being greater than originalSetLength invalid
         if (subsetLength > originalSetLength) {
             return;
         }
-        // When combination size is `subsetLength`
+        // When combination size is equal to subsetLength
         if (subsetLength == 0) {
         	Vector<Integer> finalCombo = new Vector<Integer>();
+        	// converts combination string to Vector of integers
         	comboString = comboString.trim();
             String[] combos = comboString.split(" ");
             for (String term : combos) {
             	finalCombo.add(Integer.parseInt(term));
             }
+            // adds final combination to the total power subset
             powerSubset.add(finalCombo);
-            return;
         }
-        // start from the next index till the last index
+        // moves on to the next index until the last index is reached
         for (int j = i; j < originalSetLength; j++) {
-            // Current element added to comboString and function recurs
+            // current element added to comboString and function recurs
             calculatePowerSubset(originalSet,
             		comboString + " " + (originalSet.get(j)),
-            		j + 1, subsetLength - 1,
+            		j + 1, 
+            		subsetLength - 1,
             		powerSubset);
         }
     }
 	/**
-	 * Calculates full power set.
+	 * Calculates full power set by looping calculatePowerSubset functionality.
 	 *
 	 * @param originalSet the original set
 	 */
@@ -77,6 +80,8 @@ public class Combination {
 		String comboString = "";
 		int i = 0;
 		int subsetLength = originalSet.size();
+		// loops calculate powerSubset for all possible subset lengths for
+		// for a given originalSet length
 		for (int j = 1; j < (subsetLength + 1); j++) {
 			Vector<Vector<Integer>> powerSubset =
 					new Vector<Vector<Integer>>();
@@ -85,6 +90,7 @@ public class Combination {
 					i,
 					j,
 					powerSubset);
+			// adds calculated subset  to Combination instance powerSet
 			this.powerSet.addAll(powerSubset);
 		}
 	}
@@ -93,37 +99,21 @@ public class Combination {
 	 * target sum and saves solution set in instance variable.
 	 */
 	public void calculateSolutionSet() {
+		// loops over every combination in the powerSet
 		for (Vector<Integer> set : this.powerSet) {
 			int setSum = 0;
+			// determines the sum of a given combination
 			for (int num : set) {
 				setSum += num;
 			}
+			// if the the sum of the current combination is equal to
+			// instance sumTarget then the combination is added to the
+			// solution set
 			if (setSum == this.sumTarget) {
 				this.solutionSet.add(set);
 			} else {
 				continue;
 			}
-		}
-	}
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(final String[] args) {
-		Vector<Integer> testNums = new Vector<Integer>();
-		for (int i = 1; i < 7; i++) {
-			testNums.add(i);
-		}
-		final int TEST_SUM = 10;
-		Combination test = new Combination(TEST_SUM, testNums);
-		System.out.println("Power Set:");
-		for (Vector<Integer> combo : test.powerSet) {
-			System.out.println(combo);
-		}
-		System.out.println("\nSolution Set:");
-		for (Vector<Integer> combo : test.solutionSet) {
-			System.out.println(combo);
 		}
 	}
 }
