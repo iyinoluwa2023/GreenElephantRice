@@ -30,6 +30,12 @@ public class Main {
 		System.out.println("\n");
 		
 	}
+	/**
+	 * Test case.
+	 *
+	 * @param testSet the test set
+	 * @param testSum the test target sum
+	 */
 	public static void testCase(Vector<Integer> testSet, int testSum) {
 		
 		// prints test case results to console
