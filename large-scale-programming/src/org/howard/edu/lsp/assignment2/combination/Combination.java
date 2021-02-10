@@ -6,6 +6,7 @@ import java.util.Vector;
  * The Combination Class.
  */
 public class Combination {
+	/** The combination. */
 	private Vector<Integer> combination;
 	/** The sum target. */
 	private int sumTarget;
