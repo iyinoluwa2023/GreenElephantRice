@@ -22,13 +22,24 @@ public class Main {
 		System.out.println("----------------------------------------------");
 		System.out.println("Original Set: " + testSet);
 		Combination test = new Combination(testSum, testSet);
-		System.out.println("\nTotal Combinations:");
-		for (Vector<Integer> combo : test.powerSet) {
-			System.out.println(combo);
-		}
+	
 		System.out.println("\nSolution Combinations for sum of " + testSum + ":");
-		for (Vector<Integer> combo : test.solutionSet) {
-			System.out.println(combo);
+		for (Vector<Integer> set : test.solutionSet) {
+			System.out.println(set);
+		}
+		System.out.println("\n");
+		
+	}
+	public static void testCase(Vector<Integer> testSet, int testSum) {
+		
+		// prints test case results to console
+		System.out.println("----------------------------------------------");
+		System.out.println("Original Set: " + testSet);
+		Combination test = new Combination(testSum, testSet);
+	
+		System.out.println("\nSolution Combinations for sum of " + testSum + ":");
+		for (Vector<Integer> set : test.solutionSet) {
+			System.out.println(set);
 		}
 		System.out.println("\n");
 		
@@ -36,12 +47,17 @@ public class Main {
 	public static void main(final String[] args) {
 		// random test cases
 		Random rand = new Random();
-		testCase(rand.nextInt(8), rand.nextInt(20));
-		testCase(rand.nextInt(8), rand.nextInt(20));
-		testCase(rand.nextInt(8), rand.nextInt(20));
-		// controlled test cases
-		testCase(8, 20);
-		testCase(5, 15);
-		testCase(3, 4);
+		testCase(rand.nextInt(8), rand.nextInt(6));
+		testCase(rand.nextInt(8), rand.nextInt(6));
+		testCase(rand.nextInt(8), rand.nextInt(6));
+		//controlled test cases
+		Vector<Integer> sampleTestSet = new Vector<Integer>();
+		sampleTestSet.add(5);
+		sampleTestSet.add(5);
+		sampleTestSet.add(15);
+		sampleTestSet.add(10);
+		testCase(sampleTestSet, 15);
+		testCase(6,6);
+		testCase(3,3);
 	}
 }

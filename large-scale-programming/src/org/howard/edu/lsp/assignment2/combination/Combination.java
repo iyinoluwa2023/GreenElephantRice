@@ -6,6 +6,7 @@ import java.util.Vector;
  * The Combination Class.
  */
 public class Combination {
+	private Vector<Integer> combination;
 	/** The sum target. */
 	private int sumTarget;
 	/** The power set. */
@@ -23,7 +24,9 @@ public class Combination {
 	public Combination(
 			final int sum, 
 			final Vector<Integer> nums) {
+		
 		sumTarget = sum;
+		combination = nums;
 		this.calculatePowerSet(nums);
 		this.calculateSolutionSet();
 	}
@@ -65,7 +68,7 @@ public class Combination {
         for (int j = i; j < originalSetLength; j++) {
             // current element added to comboString and function recurs
             calculatePowerSubset(originalSet,
-            		comboString + " " + (originalSet.get(j)),
+            		comboString + " " + (j),
             		j + 1, 
             		subsetLength - 1,
             		powerSubset);
@@ -99,21 +102,15 @@ public class Combination {
 	 * target sum and saves solution set in instance variable.
 	 */
 	public void calculateSolutionSet() {
-		// loops over every combination in the powerSet
 		for (Vector<Integer> set : this.powerSet) {
-			int setSum = 0;
-			// determines the sum of a given combination
+			int sum = 0;
 			for (int num : set) {
-				setSum += num;
+				sum += this.combination.get(num);
 			}
-			// if the the sum of the current combination is equal to
-			// instance sumTarget then the combination is added to the
-			// solution set
-			if (setSum == this.sumTarget) {
+			if (sum == this.sumTarget) {
 				this.solutionSet.add(set);
-			} else {
-				continue;
 			}
 		}
+		return;
 	}
 }
