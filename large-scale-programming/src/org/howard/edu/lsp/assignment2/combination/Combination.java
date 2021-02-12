@@ -7,9 +7,9 @@ import java.util.Vector;
  */
 public class Combination {
 	/** The combination. */
-	private Vector<Integer> combination;
+	private final Vector<Integer> combination;
 	/** The sum target. */
-	private int sumTarget;
+	private final int sumTarget;
 	/** The power set. */
 	public Vector<Vector<Integer>> powerSet  =
 			new Vector<Vector<Integer>>();
@@ -112,6 +112,5 @@ public class Combination {
 				this.solutionSet.add(set);
 			}
 		}
-		return;
 	}
 }
