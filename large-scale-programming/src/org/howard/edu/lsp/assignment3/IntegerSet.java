@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IntegerSet {
-    private List<Integer> set = new ArrayList<Integer>();
+    public List<Integer> set = new ArrayList<Integer>();
 
     public void clear() {
         set = new ArrayList<Integer>();
@@ -13,18 +13,57 @@ public class IntegerSet {
         return set.size();
     }
     public boolean equals(IntegerSet b) {
-        return false;
+        return set == b.set;
     }
+
     // Returns true if the set contains the value, otherwise false
     public boolean contains(int value) {
+        for (int integer : set) {
+            if (value == integer) return true;
+        }
         return false;
     }
 
-//    // Returns the largest item in the set; Throws a IntegerSetException if the set is empty
-//    public int largest() throws IntegerSetException {…};
+
+    // Returns the largest item in the set; Throws a IntegerSetException if the set is empty
+    public int largest() throws IntegerSetException {
+        try {
+            if (this.length() == 0) {
+                throw new IntegerSetException("Empty integer set");
+            }
+            int max = 0;
+            for (int integer : set) {
+                if (integer > max) {
+                    max = integer;
+                }
+            }
+            return max;
+        }
+        catch (IntegerSetException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
 //
-//    // Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
-//    public int smallest() throws IntegerSetException;
+    // Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
+    public int smallest() throws IntegerSetException {
+        try {
+            if (this.length() == 0) {
+                throw new IntegerSetException("Empty integer set");
+            }
+            int min = this.largest();
+            for (int integer : set) {
+                if (integer < min) {
+                    min = integer;
+                }
+            }
+            return min;
+        }
+        catch (IntegerSetException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
 //
     // Adds an item to the set or does nothing it already there
     public void add(int item) {

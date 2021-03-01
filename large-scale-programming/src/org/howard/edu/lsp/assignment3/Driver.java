@@ -1,35 +1,52 @@
 package org.howard.edu.lsp.assignment3;
 
 public class Driver {
-
-
-    public static void print_test(String test_string){
-        System.out.println("------------------------------------------------" + "\n" + test_string + "\n");
+    public static void printTest(String testString){
+        System.out.println("------------------------------------------------" + "\n" + testString + "\n");
     }
-
-    public static void test_clear(IntegerSet test_set){
+    public static void testClear(IntegerSet testSet){
         // clear test
-        test_set.add(5);
-        print_test("Clear Method");
-        System.out.println("Before: \n" + test_set.toString());
-        test_set.clear();
-        System.out.println("After: \n" + test_set.toString());
+        testSet.add(5);
+        printTest("Clear Method");
+        System.out.println("Before: \n" + testSet.toString());
+        testSet.clear();
+        System.out.println("After: \n" + testSet.toString());
     }
-
-    public static void test_length(IntegerSet test_set, int n) {
-        for (int i = 0; i < n; i++) {
-            test_set.add(i);
-        }
-        print_test("Length Method");
+    public static void testLength(IntegerSet testSet, int n) {
+        for (int i = 0; i < n; i++) testSet.add(i + 1);
+        printTest("Length Method");
         System.out.println("Expected: " + n);
-        System.out.println(test_set.toString() + "\n");
-        System.out.println("test_set.length(): " + test_set.length());
+        System.out.println(testSet.toString() + "\n");
+        System.out.println("testSet.length(): " + testSet.length());
     }
-
-    public static void main(String[] args) {
-        IntegerSet test_set = new IntegerSet();
-
-        test_clear(test_set);
-        test_length(test_set, 5);
+    public static void testLargest(IntegerSet testSet, int n) throws IntegerSetException {
+        for (int i = 0; i < n; i++) testSet.add(i + 1);
+        printTest("Largest Method");
+        System.out.println("Expected: " + (n - 1));
+        int max = testSet.largest();
+        System.out.println(testSet.toString() + "\n");
+        System.out.println("testSet.largest(): " + max);
+    }
+    public static void testSmallest(IntegerSet testSet, int n) throws IntegerSetException {
+        for (int i = 0; i < n; i++) testSet.add(i + 1);
+        printTest("Smallest Method");
+        System.out.println("Expected: " + 1);
+        int min = testSet.smallest();
+        System.out.println(testSet.toString() + "\n");
+        System.out.println("testSet.smallest(): " + min);
+    }
+    public static void main(String[] args) throws IntegerSetException {
+        IntegerSet testSet = new IntegerSet();
+        // IntegerSet.clear()
+        testClear(testSet);
+        // IntegerSet.length()
+        testLength(testSet, 15);
+        testSet.clear();
+        // IntegerSet.largest()
+        testLargest(testSet, 15);
+        testSet.clear();
+        // IntegerSet.smallest()
+        testSmallest(testSet, 15);
+        testSet.clear();
     }
 }
