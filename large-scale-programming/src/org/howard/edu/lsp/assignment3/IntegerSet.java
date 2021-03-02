@@ -1,13 +1,21 @@
 package org.howard.edu.lsp.assignment3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class IntegerSet {
-    public List<Integer> set = new ArrayList<Integer>();
-
+    private List<Integer> set;
+    {
+        set = new ArrayList<>();
+    }
+    public IntegerSet(IntegerSet another) { this.set = another.set; }
+    public IntegerSet() { }
+    public void sort() {
+        Collections.sort(set);
+    }
     public void clear() {
-        set = new ArrayList<Integer>();
+        set = new ArrayList<>();
     }
     public int length() {
         return set.size();
@@ -15,17 +23,12 @@ public class IntegerSet {
     public boolean equals(IntegerSet b) {
         return set == b.set;
     }
-
-    // Returns true if the set contains the value, otherwise false
     public boolean contains(int value) {
         for (int integer : set) {
             if (value == integer) return true;
         }
         return false;
     }
-
-
-    // Returns the largest item in the set; Throws a IntegerSetException if the set is empty
     public int largest() throws IntegerSetException {
         try {
             if (this.length() == 0) {
@@ -44,8 +47,6 @@ public class IntegerSet {
         }
         return 0;
     }
-//
-    // Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
     public int smallest() throws IntegerSetException {
         try {
             if (this.length() == 0) {
@@ -64,30 +65,47 @@ public class IntegerSet {
         }
         return 0;
     }
-//
-    // Adds an item to the set or does nothing it already there
     public void add(int item) {
-        set.add(item);
-    }; // adds item to s or does nothing if it is in set
-//
-//    // Removes an item from the set or does nothing if not there
-//    public void remove(int item) {…};
-//
-//    // Set union
-//    public static void union(IntegerSet intSetb) {…};
-//
-//    // Set intersection
-//    public static public intSet intersect(IntegerSet intSetb) {…};
-//
-//    // Set difference, i.e., s1 –s2
-//    public static intSet diff(IntegerSet intSetb); // set difference, i.e. s1 - s2
-//
-//    // Returns true if the set is empty, false otherwise
-//    boolean isEmpty();
-//
-    // Return String representation of your set
+        if (!set.contains(item)) set.add(item);
+    }
+    public void remove(int item) {
+        for (int i = this.length() - 1; i >= 0; i--) {
+            if (set.get(i) != item) continue;
+            set.remove(i);
+        }
+    };
+    public void union(IntegerSet setB) {
+        for (int integerB : setB.set) {
+            this.add(integerB);
+        }
+    }
+    public void intersect(IntegerSet setB) {
+        IntegerSet intersectSet = new IntegerSet();
+        for (int integerB : setB.set) {
+            if (this.contains(integerB)) {
+                intersectSet.add(integerB);
+            }
+        }
+        this.set = intersectSet.set;
+    }
+
+    public void diff(IntegerSet setB) // set difference, i.e. s1 - s2
+    {
+        for (int integerB : setB.set) {
+            if (!this.contains(integerB)) {
+                continue;
+            }
+            this.remove(integerB);
+        }
+    }
+
+    // Returns true if the set is empty, false otherwise
+    public boolean isEmpty() {
+        ArrayList<Integer> empty = new ArrayList<>();
+        return set.equals(empty);
+    }
     public String toString() {
         return set.toString();
-    };	// return String representation of your set
+    }
 
 }
