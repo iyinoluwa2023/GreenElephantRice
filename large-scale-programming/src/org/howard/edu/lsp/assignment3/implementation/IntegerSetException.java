@@ -1,4 +1,4 @@
-package org.howard.edu.lsp.assignment3;
+package org.howard.edu.lsp.assignment3.implementation;
 
 /**
  * The IntegerSetException class

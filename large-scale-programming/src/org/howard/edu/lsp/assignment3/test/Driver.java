@@ -1,4 +1,7 @@
-package org.howard.edu.lsp.assignment3;
+package org.howard.edu.lsp.assignment3.test;
+
+import org.howard.edu.lsp.assignment3.implementation.IntegerSet;
+import org.howard.edu.lsp.assignment3.implementation.IntegerSetException;
 
 import java.util.Random;
 
@@ -216,7 +219,7 @@ class Driver {
    * tests the IntegerSet.largest() method
    */
   public static void largestTest() throws IntegerSetException {
-	IntegerSet testSet = new IntegerSet();
+    IntegerSet testSet = new IntegerSet();
     // tests method 3 times
     for (int i = 0; i < 3; i++) {
       test("Largest", i + 1);
@@ -229,16 +232,16 @@ class Driver {
       testSet.clear();
     }
     test("Largest", 4);
-	printIntegerSet(SET, testSet);
-	printOperationResult("largest", testSet.largest());
+    printIntegerSet(SET, testSet);
+    printOperationResult("largest", testSet.largest());
   }
 
   /**
    * tests the IntegerSet.smallest() method
    */
   public static void smallestTest() throws IntegerSetException {
-	IntegerSet testSet = new IntegerSet();
-	for (int i = 0; i < 3; i++) {
+    IntegerSet testSet = new IntegerSet();
+    for (int i = 0; i < 3; i++) {
       test("Smallest", i + 1);
       // populates random set
       populateSetRandom(testSet, 7);
@@ -248,9 +251,9 @@ class Driver {
       printOperationResult("smallest", testSet.smallest());
       testSet.clear();
     }
-	test("Smallest", 4);
-	printIntegerSet(SET, testSet);
-	printOperationResult("smallest", testSet.smallest());
+    test("Smallest", 4);
+    printIntegerSet(SET, testSet);
+    printOperationResult("smallest", testSet.smallest());
   }
 
   /**
@@ -567,8 +570,8 @@ class Driver {
     System.out.println("Expected: [0, 1, 2, 3, 4 ,5 ,6]");
     printIntegerSet("Result Set: ", testSet);
   }
-  
-  
+
+
   /**
    * The main method.
    *
@@ -576,7 +579,7 @@ class Driver {
    * @throws IntegerSetException the integer set exception
    */
   public static void main(String[] args) throws IntegerSetException {
-	// runs all tests
+    // runs all tests
     clearTest();
     lengthTest();
     equalsTest();

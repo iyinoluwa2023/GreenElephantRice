@@ -1,4 +1,4 @@
-package org.howard.edu.lsp.assignment3;
+package org.howard.edu.lsp.assignment3.implementation;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * The Integer Set class, an ArrayList of Integers.
  */
-class IntegerSet {
+public class IntegerSet {
   private List<Integer> set = new ArrayList<>();
 
   /**
@@ -50,7 +50,7 @@ class IntegerSet {
    * @return true, if the value is in the IntegerSet set
    */
   public boolean contains(int value) {
-	// for each integer in set, if the integer is equal to value return true
+    // for each integer in set, if the integer is equal to value return true
     for (int integer : set) {
       if (value == integer) {
         return true;
@@ -118,7 +118,7 @@ class IntegerSet {
    * @param item the item being added to the set
    */
   public void add(int item) {
-	// if the set does not contain item, then the item is added to the set
+    // if the set does not contain item, then the item is added to the set
     if (!set.contains(item)) {
       set.add(item);
     }
@@ -130,7 +130,7 @@ class IntegerSet {
    * @param item the item being removed from the set
    */
   public void remove(int item) {
-	// for each integer in the set, if it equal to item, then item is removed
+    // for each integer in the set, if it equal to item, then item is removed
     for (int i = this.length() - 1; i >= 0; i--) {
       if (set.get(i) != item) {
         continue;
@@ -140,12 +140,12 @@ class IntegerSet {
   }
 
   /**
-   * Determines the union of two sets, all integers from setA or setB. 
+   * Determines the union of two sets, all integers from setA or setB.
    *
    * @param setB the second set you are comparing to
    */
   public void union(IntegerSet setB) {
-	// for each integer in setB, add integer to setA
+    // for each integer in setB, add integer to setA
     for (int integerB : setB.set) {
       this.add(integerB);
     }
@@ -174,7 +174,7 @@ class IntegerSet {
    * @param setB the second set you are comparing to
    */
   public void diff(IntegerSet setB) {
-	// for each integer in setB, if setA contains that integer than its removed from setA
+    // for each integer in setB, if setA contains that integer than its removed from setA
     for (int integerB : setB.set) {
       if (!this.contains(integerB)) {
         continue;
@@ -189,7 +189,7 @@ class IntegerSet {
    * @return true, if the set is empty
    */
   public boolean isEmpty() {
-	// returns true if the set's size is 0
+    // returns true if the set's size is 0
     return (set.size() == 0);
   }
 
