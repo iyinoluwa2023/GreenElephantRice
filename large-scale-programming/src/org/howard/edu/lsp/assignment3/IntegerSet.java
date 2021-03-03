@@ -26,7 +26,11 @@ class IntegerSet {
   }
 
   public boolean equals(IntegerSet b) {
-    return set == b.set;
+    // if both sets are empty
+    if (set.size() == 0 && b.set.size() == 0) {
+      return true;
+    }
+    return set.equals(b.set);
   }
 
   public boolean contains(int value) {
