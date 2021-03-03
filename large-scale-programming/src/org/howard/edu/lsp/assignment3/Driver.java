@@ -216,33 +216,41 @@ class Driver {
    * tests the IntegerSet.largest() method
    */
   public static void largestTest() throws IntegerSetException {
+	IntegerSet testSet = new IntegerSet();
     // tests method 3 times
     for (int i = 0; i < 3; i++) {
       test("Largest", i + 1);
-      IntegerSet testSet = new IntegerSet();
       // populates random set
       populateSetRandom(testSet, 7);
       // sorts set to clarify largest number
       testSet.sort();
       printIntegerSet(SET, testSet);
       printOperationResult("largest", testSet.largest());
+      testSet.clear();
     }
+    test("Largest", 4);
+	printIntegerSet(SET, testSet);
+	printOperationResult("largest", testSet.largest());
   }
 
   /**
    * tests the IntegerSet.smallest() method
    */
   public static void smallestTest() throws IntegerSetException {
-    for (int i = 0; i < 3; i++) {
+	IntegerSet testSet = new IntegerSet();
+	for (int i = 0; i < 3; i++) {
       test("Smallest", i + 1);
-      IntegerSet testSet = new IntegerSet();
       // populates random set
       populateSetRandom(testSet, 7);
       // sorts set to clarify largest number
       testSet.sort();
       printIntegerSet(SET, testSet);
       printOperationResult("smallest", testSet.smallest());
+      testSet.clear();
     }
+	test("Smallest", 4);
+	printIntegerSet(SET, testSet);
+	printOperationResult("smallest", testSet.smallest());
   }
 
   /**
