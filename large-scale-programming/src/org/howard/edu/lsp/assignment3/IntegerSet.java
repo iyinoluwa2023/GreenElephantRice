@@ -119,7 +119,7 @@ class IntegerSet {
   }
 
   public boolean isEmpty() {
-    return (set.size() != 0);
+    return (set.size() == 0);
   }
 
   public String toString() {
