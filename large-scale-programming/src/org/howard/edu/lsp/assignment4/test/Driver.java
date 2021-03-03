@@ -1,19 +1,30 @@
-package org.howard.edu.lsp.assignment3.test;
+package org.howard.edu.lsp.assignment4.test;
 
-import org.howard.edu.lsp.assignment3.implementation.IntegerSet;
-import org.howard.edu.lsp.assignment3.implementation.IntegerSetException;
+import org.howard.edu.lsp.assignment4.implementation.IntegerSet;
+import org.howard.edu.lsp.assignment4.implementation.IntegerSetException;
 
 import java.util.Random;
 
-class Driver {
+/**
+ * The Driver class for method testing
+ */
+public class Driver {
   // re-used strings
+  /** "Before" string constant */
   public static String BEFORE = "Before";
+  /** "After" string constant */
   public static String AFTER = "After";
+  /** "Set A" string constant */
   public static String SETA = "Set A";
+  /** "Set B" string constant */
   public static String SETB = "Set B";
+  /** "SET" string constant */
   public static String SET = "Set";
+  /** "Union" string constant */
   public static String UNION = "Union";
+  /** "Intersection" string constant */
   public static String INTERSECTION = "Intersection";
+  /** "Difference" string constant */
   public static String DIFF = "Difference";
 
   // helper functions
