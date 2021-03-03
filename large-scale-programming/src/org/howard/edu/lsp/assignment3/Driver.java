@@ -559,7 +559,16 @@ class Driver {
     System.out.println("Expected: [0, 1, 2, 3, 4 ,5 ,6]");
     printIntegerSet("Result Set: ", testSet);
   }
+  
+  
+  /**
+   * The main method.
+   *
+   * @param args the arguments
+   * @throws IntegerSetException the integer set exception
+   */
   public static void main(String[] args) throws IntegerSetException {
+	// runs all tests
     clearTest();
     lengthTest();
     equalsTest();
