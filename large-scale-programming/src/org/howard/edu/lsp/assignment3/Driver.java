@@ -14,34 +14,79 @@ class Driver {
   public static String DIFF = "Difference";
 
   // helper functions
+  /**
+   * Displays test name
+   * "testString Method: Test n"
+   *
+   * @param testString the test name
+   * @param n the number for the test
+   */
   public static void test(String testString, int n) {
     System.out.println(
-        "------------------------------------------------" + "\n"
-                + testString + " Method: Test " + n + "\n");
+            "------------------------------------------------" + "\n"
+                    + testString + " Method: Test " + n + "\n");
   }
 
+  /**
+   * Prints the integer set.
+   * "tag : integerSet"
+   *
+   * @param tag the tag for the integer set
+   * @param integerSet the integer set
+   */
   public static void printIntegerSet(String tag, IntegerSet integerSet) {
     System.out.println(tag + ": " + integerSet.toString());
   }
 
+  /**
+   * Prints an integer.
+   * "tag : integer"
+   * @param tag the tag for the integer
+   * @param integer the integer
+   */
   public static void printInteger(String tag, int integer) {
     System.out.println(tag + ": " + integer);
   }
 
+  /**
+   * Prints the result for a boolean returning method
+   * "IntegerSet.operation(): result"
+   *
+   * @param operation the IntegerSet method
+   * @param result the boolean result
+   */
   public static void printOperationResult(String operation, boolean result) {
     System.out.println("IntegerSet." + operation + "(): " + result);
   }
 
+  /**
+   * Prints the result for a integer returning method
+   *
+   * @param operation the IntegerSet method
+   * @param result the integer result
+   */
   public static void printOperationResult(String operation, int result) {
     System.out.println("IntegerSet." + operation + "(): " + result);
   }
 
+  /**
+   * Populates the IntegerSet with numbers from 0 to (n - 1)
+   *
+   * @param testSet the test IntegerSet
+   * @param n the length of the IntegerSet
+   */
   public static void populateSet(IntegerSet testSet, int n) {
     for (int i = 0; i < n; i++) {
       testSet.add(i);
     }
   }
 
+  /**
+   * Populates the IntegerSet with n random numbers between 0 and 99
+   *
+   * @param testSet the test IntegerSet
+   * @param n the length of the IntegerSet
+   */
   public static void populateSetRandom(IntegerSet testSet, int n) {
     Random rand = new Random();
     for (int i = 0; i < n; i++) {
@@ -49,7 +94,10 @@ class Driver {
     }
   }
 
-  // testing functions
+  //testing functions
+  /**
+   * tests the IntegerSet.clear() method
+   */
   public static void clearTest() {
     // tests method 3 times
     for (int i = 0; i < 3; i++) {
@@ -65,14 +113,17 @@ class Driver {
     }
   }
 
+  /**
+   * tests the IntegerSet.length() method
+   */
   public static void lengthTest() {
-    // tests method 3 times
-    for (int i = 0; i < 3; i++) {
+    // tests method 5 times
+    for (int i = 0; i < 5; i++) {
       IntegerSet testSet = new IntegerSet();
       Random rand = new Random();
       test("Length", i + 1);
-      // creates randomly sized integer set not to exceed length of 5
-      for (int j = rand.nextInt(5) - 1; j >= 0; j--) {
+      // creates randomly sized integer set not to exceed length of 10
+      for (int j = rand.nextInt(10) - 1; j >= 0; j--) {
         testSet.add(j);
       }
       printIntegerSet(BEFORE, testSet);
@@ -80,12 +131,23 @@ class Driver {
     }
   }
 
+  /**
+   * Helper function for the equalsTest() function
+   *
+   * @param testSetA the test IntegerSet A
+   * @param testSetB the test IntegerSet B
+   */
   public static void equalsSubTest(IntegerSet testSetA, IntegerSet testSetB) {
+    // prints integer sets
     printIntegerSet(SETA, testSetA);
     printIntegerSet(SETB, testSetB);
+    // performs operation on sets
     printOperationResult("equals", testSetA.equals(testSetB));
   }
 
+  /**
+   * tests the IntegerSet.equals() method
+   */
   public static void equalsTest() {
     IntegerSet testSetA;
     IntegerSet testSetB;
@@ -117,6 +179,9 @@ class Driver {
     equalsSubTest(testSetA, testSetB);
   }
 
+  /**
+   * tests the IntegerSet.contains() method
+   */
   public static void containsTest() {
     IntegerSet testSet = new IntegerSet();
     Random rand = new Random();
@@ -148,6 +213,9 @@ class Driver {
     printOperationResult("contains", testSet.contains(randomNumber));
   }
 
+  /**
+   * tests the IntegerSet.largest() method
+   */
   public static void largestTest() throws IntegerSetException {
     // tests method 3 times
     for (int i = 0; i < 3; i++) {
@@ -162,6 +230,9 @@ class Driver {
     }
   }
 
+  /**
+   * tests the IntegerSet.smallest() method
+   */
   public static void smallestTest() throws IntegerSetException {
     for (int i = 0; i < 3; i++) {
       test("Smallest", i + 1);
@@ -175,6 +246,9 @@ class Driver {
     }
   }
 
+  /**
+   * tests the IntegerSet.add() method
+   */
   public static void addTest() {
     IntegerSet testSet = new IntegerSet();
     Random rand = new Random();
@@ -211,6 +285,9 @@ class Driver {
     printIntegerSet(AFTER, testSet);
   }
 
+  /**
+   * tests the IntegerSet.remove() method
+   */
   public static void removeTest() {
     IntegerSet testSet = new IntegerSet();
 
@@ -256,14 +333,25 @@ class Driver {
     printIntegerSet(AFTER, testSet);
   }
 
+  /**
+   * Helper function for the unionTest() function
+   *
+   * @param testSetA the test IntegerSet A
+   * @param testSetB the test IntegerSet B
+   */
   public static void unionSubTest(IntegerSet testSetA, IntegerSet testSetB) {
+    // prints integer sets
     printIntegerSet(SETA, testSetA);
     printIntegerSet(SETB, testSetB);
     // union of sets
     testSetA.union(testSetB);
+    // prints union result
     printIntegerSet(UNION, testSetA);
   }
 
+  /**
+   * tests the IntegerSet.union() method
+   */
   public static void unionTest() {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
@@ -304,16 +392,28 @@ class Driver {
     unionSubTest(testSetA, testSetB);
   }
 
+  /**
+   * Helper function for the intersectionTest() function
+   *
+   * @param testSetA the test IntegerSet A
+   * @param testSetB the test IntegerSet B
+   */
   public static void intersectionSubTest(IntegerSet testSetA, IntegerSet testSetB) {
+    // sorts sets for clarity
     testSetA.sort();
     testSetB.sort();
+    // prints integer sets
     printIntegerSet(SETA, testSetA);
     printIntegerSet(SETB, testSetB);
     // intersection of sets
     testSetA.intersect(testSetB);
+    // prints intersection set
     printIntegerSet(INTERSECTION, testSetA);
   }
 
+  /**
+   * tests the IntegerSet.intersect() method
+   */
   public static void intersectionTest() {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
@@ -354,16 +454,27 @@ class Driver {
     intersectionSubTest(testSetA, testSetB);
   }
 
+  /**
+   * Helper function for the diffTest() function
+   *
+   * @param testSetA the test IntegerSet A
+   * @param testSetB the test IntegerSet B
+   */
   public static void diffSubTest(IntegerSet testSetA, IntegerSet testSetB) {
+    // sorts sets for clarity
     testSetA.sort();
     testSetB.sort();
+    // prints integer sets
     printIntegerSet(SETA, testSetA);
     printIntegerSet(SETB, testSetB);
-    // intersection of sets
+    // difference of sets
     testSetA.diff(testSetB);
     printIntegerSet(DIFF, testSetA);
   }
 
+  /**
+   * tests the IntegerSet.diff() method
+   */
   public static void diffTest() {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
@@ -420,6 +531,9 @@ class Driver {
     diffSubTest(testSetA, testSetB);
   }
 
+  /**
+   * tests the IntegerSet.isEmpty() method
+   */
   public static void isEmptyTest() {
     IntegerSet testSet = new IntegerSet();
 
@@ -435,7 +549,9 @@ class Driver {
     printOperationResult("isEmpty", testSet.isEmpty());
   }
 
-  /** */
+  /**
+   * tests the IntegerSet.toString() method
+   */
   public static void toStringTest() {
     IntegerSet testSet = new IntegerSet();
     test("To String", 1);
@@ -444,7 +560,6 @@ class Driver {
     System.out.println("Expected: [0, 1, 2, 3, 4 ,5 ,6]");
     printIntegerSet("Result Set: ", testSet);
   }
-
   public static void main(String[] args) throws IntegerSetException {
     clearTest();
     lengthTest();
