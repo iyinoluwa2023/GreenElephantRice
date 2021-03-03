@@ -2,7 +2,6 @@ package org.howard.edu.lsp.assignment3;
 
 import java.util.Random;
 
-
 class Driver {
   // re-used strings
   public static String BEFORE = "Before";
@@ -13,34 +12,43 @@ class Driver {
   public static String UNION = "Union";
   public static String INTERSECTION = "Intersection";
   public static String DIFF = "Difference";
+
   // helper functions
   public static void test(String testString, int n) {
     System.out.println(
-        "------------------------------------------------" + "\n" + testString + " Method: Test " + n + "\n");
+        "------------------------------------------------" + "\n"
+                + testString + " Method: Test " + n + "\n");
   }
+
   public static void printIntegerSet(String tag, IntegerSet integerSet) {
     System.out.println(tag + ": " + integerSet.toString());
   }
+
   public static void printInteger(String tag, int integer) {
     System.out.println(tag + ": " + integer);
   }
+
   public static void printOperationResult(String operation, boolean result) {
     System.out.println("IntegerSet." + operation + "(): " + result);
   }
+
   public static void printOperationResult(String operation, int result) {
     System.out.println("IntegerSet." + operation + "(): " + result);
   }
+
   public static void populateSet(IntegerSet testSet, int n) {
     for (int i = 0; i < n; i++) {
       testSet.add(i);
     }
   }
+
   public static void populateSetRandom(IntegerSet testSet, int n) {
     Random rand = new Random();
     for (int i = 0; i < n; i++) {
       testSet.add(rand.nextInt(100));
     }
   }
+
   // testing functions
   public static void clearTest() {
     // tests method 3 times
@@ -56,6 +64,7 @@ class Driver {
       printIntegerSet(AFTER, testSet);
     }
   }
+
   public static void lengthTest() {
     // tests method 3 times
     for (int i = 0; i < 3; i++) {
@@ -70,11 +79,13 @@ class Driver {
       printOperationResult("length", testSet.length());
     }
   }
+
   public static void equalsSubTest(IntegerSet testSetA, IntegerSet testSetB) {
     printIntegerSet(SETA, testSetA);
     printIntegerSet(SETB, testSetB);
     printOperationResult("equals", testSetA.equals(testSetB));
   }
+
   public static void equalsTest() {
     IntegerSet testSetA;
     IntegerSet testSetB;
@@ -105,6 +116,7 @@ class Driver {
     populateSet(testSetB, 7);
     equalsSubTest(testSetA, testSetB);
   }
+
   public static void containsTest() {
     IntegerSet testSet = new IntegerSet();
     Random rand = new Random();
@@ -135,6 +147,7 @@ class Driver {
     System.out.println("Test Integer: " + randomNumber);
     printOperationResult("contains", testSet.contains(randomNumber));
   }
+
   public static void largestTest() throws IntegerSetException {
     // tests method 3 times
     for (int i = 0; i < 3; i++) {
@@ -148,6 +161,7 @@ class Driver {
       printOperationResult("largest", testSet.largest());
     }
   }
+
   public static void smallestTest() throws IntegerSetException {
     for (int i = 0; i < 3; i++) {
       test("Smallest", i + 1);
@@ -160,6 +174,7 @@ class Driver {
       printOperationResult("smallest", testSet.smallest());
     }
   }
+
   public static void addTest() {
     IntegerSet testSet = new IntegerSet();
     Random rand = new Random();
@@ -195,6 +210,7 @@ class Driver {
     printInteger("Test Integer", randomInt);
     printIntegerSet(AFTER, testSet);
   }
+
   public static void removeTest() {
     IntegerSet testSet = new IntegerSet();
 
@@ -239,6 +255,7 @@ class Driver {
     printInteger("Test Integer", 0);
     printIntegerSet(AFTER, testSet);
   }
+
   public static void unionSubTest(IntegerSet testSetA, IntegerSet testSetB) {
     printIntegerSet(SETA, testSetA);
     printIntegerSet(SETB, testSetB);
@@ -246,6 +263,7 @@ class Driver {
     testSetA.union(testSetB);
     printIntegerSet(UNION, testSetA);
   }
+
   public static void unionTest() {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
@@ -285,6 +303,7 @@ class Driver {
     test(UNION, 5);
     unionSubTest(testSetA, testSetB);
   }
+
   public static void intersectionSubTest(IntegerSet testSetA, IntegerSet testSetB) {
     testSetA.sort();
     testSetB.sort();
@@ -294,6 +313,7 @@ class Driver {
     testSetA.intersect(testSetB);
     printIntegerSet(INTERSECTION, testSetA);
   }
+
   public static void intersectionTest() {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
@@ -333,6 +353,7 @@ class Driver {
     test(INTERSECTION, 5);
     intersectionSubTest(testSetA, testSetB);
   }
+
   public static void diffSubTest(IntegerSet testSetA, IntegerSet testSetB) {
     testSetA.sort();
     testSetB.sort();
@@ -342,6 +363,7 @@ class Driver {
     testSetA.diff(testSetB);
     printIntegerSet(DIFF, testSetA);
   }
+
   public static void diffTest() {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
@@ -397,6 +419,7 @@ class Driver {
     testSetB.add(1);
     diffSubTest(testSetA, testSetB);
   }
+
   public static void isEmptyTest() {
     IntegerSet testSet = new IntegerSet();
 
@@ -411,6 +434,7 @@ class Driver {
     printIntegerSet(SET, testSet);
     printOperationResult("isEmpty", testSet.isEmpty());
   }
+
   public static void toStringTest() {
     IntegerSet testSet = new IntegerSet();
     test("To String", 1);
@@ -419,6 +443,7 @@ class Driver {
     System.out.println("Expected: [0, 1, 2, 3, 4 ,5 ,6]");
     printIntegerSet("Result Set: ", testSet);
   }
+
   public static void main(String[] args) throws IntegerSetException {
     clearTest();
     lengthTest();
