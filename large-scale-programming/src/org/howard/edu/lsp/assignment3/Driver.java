@@ -151,7 +151,6 @@ class Driver {
   public static void equalsTest() {
     IntegerSet testSetA;
     IntegerSet testSetB;
-    Random rand = new Random();
     // tests with one populated set and one empty set (not equal)
     testSetA = new IntegerSet();
     testSetB = new IntegerSet();
