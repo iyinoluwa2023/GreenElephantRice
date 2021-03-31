@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.howard.edu.lsp.assignment1"},{"l":"org.howard.edu.lsp.assignment2.combination"},{"l":"org.howard.edu.lsp.assignment2.test"},{"l":"org.howard.edu.lsp.assignment4.implementation"},{"l":"org.howard.edu.lsp.assignment4.test"}]
