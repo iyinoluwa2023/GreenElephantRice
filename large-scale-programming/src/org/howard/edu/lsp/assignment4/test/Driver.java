@@ -42,6 +42,18 @@ public class Driver {
   }
 
   /**
+   * Displays test name
+   * "testString Method: Test n"
+   *
+   * @param testString the test name
+   */
+  public static void test(String testString) {
+    System.out.println(
+            "------------------------------------------------" + "\n"
+                    + testString + "\n");
+  }
+
+  /**
    * Prints the integer set.
    * "tag : integerSet"
    *
@@ -104,7 +116,7 @@ public class Driver {
   public static void populateSetRandom(IntegerSet testSet, int n) {
     Random rand = new Random();
     for (int i = 0; i < n; i++) {
-      testSet.add(rand.nextInt(100));
+      testSet.add(rand.nextInt(50));
     }
   }
 
