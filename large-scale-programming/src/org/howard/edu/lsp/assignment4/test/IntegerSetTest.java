@@ -306,7 +306,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.union() test - Union of two one integer length sets with non-intersecting ints")
-    void unionSingleIntegerSets() {
+    void testUnionSingleIntegerSets() {
         IntegerSet intSetB = new IntegerSet();
         test("Union of two one integer length sets with non-intersecting ints");
 
@@ -319,7 +319,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.union() - Union of two populated sets with intersecting ints")
-    void unionPopulatedSets() {
+    void testUnionPopulatedSets() {
         IntegerSet intSetB = new IntegerSet();
         test("Union of two populated sets with intersecting ints");
 
@@ -332,7 +332,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.union() test - Union of one populated set and one unpopulated set")
-    void unionPopulatedUnpopulatedIntegerSets() {
+    void testUnionPopulatedUnpopulatedIntegerSets() {
         IntegerSet intSetB = new IntegerSet();
         test("Union of one populated set and one unpopulated set");
 
@@ -344,7 +344,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.union() test - Union of two empty sets")
-        void unionEmptyIntegerSets() {
+        void testUnionEmptyIntegerSets() {
         IntegerSet intSetB = new IntegerSet();
         test("Union of two empty sets");
         unionSubTest(intSet, intSetB);
