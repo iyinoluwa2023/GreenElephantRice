@@ -17,6 +17,11 @@ class IntegerSetTest {
         intSet = new IntegerSet();
     }
 
+    @AfterEach
+    public void tearDown() {
+        intSet.clear();
+    }
+
     @RepeatedTest(3)
     @DisplayName("IntegerSet.clear()")
     public void testClear() {
