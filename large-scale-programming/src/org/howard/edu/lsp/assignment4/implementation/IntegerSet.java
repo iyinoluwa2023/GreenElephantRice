@@ -144,11 +144,17 @@ public class IntegerSet {
    *
    * @param setB the second set you are comparing to
    */
-  public void union(IntegerSet setB) {
-    // for each integer in setB, add integer to setA
-    for (int integerB : setB.set) {
-      this.add(integerB);
+  public void union(IntegerSet setB) throws IntegerSetException {
+    if (!(setB.isEmpty()) && !(this.isEmpty())) {
+      // for each integer in setB, add integer to setA
+      for (int integerB : setB.set) {
+        this.add(integerB);
+      }
     }
+    else {
+      throw new IntegerSetException("Can't run this operation on empty integer set");
+    }
+
   }
 
   /**
@@ -156,16 +162,22 @@ public class IntegerSet {
    *
    * @param setB the second set you are comparing to
    */
-  public void intersect(IntegerSet setB) {
+  public void intersect(IntegerSet setB) throws IntegerSetException {
     IntegerSet intersectSet = new IntegerSet();
-    // for each integer in setB, if setA contains the integer then its added to the final set
-    for (int integerB : setB.set) {
-      if (this.contains(integerB)) {
-        intersectSet.add(integerB);
+    if (!(setB.isEmpty())) {
+      // for each integer in setB, if setA contains the integer then its added to the final set
+      for (int integerB : setB.set) {
+        if (this.contains(integerB)) {
+          intersectSet.add(integerB);
+        }
       }
+      // intersection is saved to the instance
+      this.set = intersectSet.set;
     }
-    // intersection is saved to the instance
-    this.set = intersectSet.set;
+    else {
+      throw new IntegerSetException("Can't run this operation on empty integer set");
+    }
+
   }
 
   /**
@@ -173,13 +185,18 @@ public class IntegerSet {
    *
    * @param setB the second set you are comparing to
    */
-  public void diff(IntegerSet setB) {
+  public void diff(IntegerSet setB) throws IntegerSetException {
     // for each integer in setB, if setA contains that integer than its removed from setA
-    for (int integerB : setB.set) {
-      if (!this.contains(integerB)) {
-        continue;
+    if (!(setB.isEmpty())) {
+      for (int integerB : setB.set) {
+        if (!this.contains(integerB)) {
+          continue;
+        }
+        this.remove(integerB);
       }
-      this.remove(integerB);
+    }
+    else {
+      throw new IntegerSetException("Can't run this operation on empty integer set");
     }
   }
 

@@ -372,7 +372,7 @@ public class Driver {
    * @param testSetA the test IntegerSet A
    * @param testSetB the test IntegerSet B
    */
-  public static void unionSubTest(IntegerSet testSetA, IntegerSet testSetB) {
+  public static void unionSubTest(IntegerSet testSetA, IntegerSet testSetB) throws IntegerSetException {
     // prints integer sets
     printIntegerSet(SETA, testSetA);
     printIntegerSet(SETB, testSetB);
@@ -385,7 +385,7 @@ public class Driver {
   /**
    * tests the IntegerSet.union() method
    */
-  public static void unionTest() {
+  public static void unionTest() throws IntegerSetException {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
 
@@ -431,7 +431,7 @@ public class Driver {
    * @param testSetA the test IntegerSet A
    * @param testSetB the test IntegerSet B
    */
-  public static void intersectionSubTest(IntegerSet testSetA, IntegerSet testSetB) {
+  public static void intersectionSubTest(IntegerSet testSetA, IntegerSet testSetB) throws IntegerSetException {
     // sorts sets for clarity
     testSetA.sort();
     testSetB.sort();
@@ -447,7 +447,7 @@ public class Driver {
   /**
    * tests the IntegerSet.intersect() method
    */
-  public static void intersectionTest() {
+  public static void intersectionTest() throws IntegerSetException {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
 
@@ -493,7 +493,7 @@ public class Driver {
    * @param testSetA the test IntegerSet A
    * @param testSetB the test IntegerSet B
    */
-  public static void diffSubTest(IntegerSet testSetA, IntegerSet testSetB) {
+  public static void diffSubTest(IntegerSet testSetA, IntegerSet testSetB) throws IntegerSetException {
     // sorts sets for clarity
     testSetA.sort();
     testSetB.sort();
@@ -508,7 +508,7 @@ public class Driver {
   /**
    * tests the IntegerSet.diff() method
    */
-  public static void diffTest() {
+  public static void diffTest() throws IntegerSetException {
     IntegerSet testSetA = new IntegerSet();
     IntegerSet testSetB = new IntegerSet();
 

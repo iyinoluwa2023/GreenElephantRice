@@ -306,7 +306,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.union() test - Union of two one integer length sets with non-intersecting ints")
-    void testUnionSingleIntegerSets() {
+    void testUnionSingleIntegerSets() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Union of two one integer length sets with non-intersecting ints");
 
@@ -319,7 +319,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.union() - Union of two populated sets with intersecting ints")
-    void testUnionPopulatedSets() {
+    void testUnionPopulatedSets() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Union of two populated sets with intersecting ints");
 
@@ -337,9 +337,10 @@ class IntegerSetTest {
         test("Union of one populated set and one unpopulated set");
 
         populateSet(intSet, 5);
-        unionSubTest(intSet, intSetB);
-
-        Assertions.assertEquals(intSet.toString(), "[0, 1, 2, 3, 4]");
+        System.out.println("Should have no output");
+        Assertions.assertThrows(IntegerSetException.class, ()->{
+            intSet.union(intSetB);
+        });
     }
 
     @Test
@@ -347,14 +348,15 @@ class IntegerSetTest {
         void testUnionEmptyIntegerSets() {
         IntegerSet intSetB = new IntegerSet();
         test("Union of two empty sets");
-        unionSubTest(intSet, intSetB);
-
-        Assertions.assertEquals(intSet.toString(), "[]");
+        System.out.println("Should have no output");
+        Assertions.assertThrows(IntegerSetException.class, ()->{
+            intSet.union(intSetB);
+        });
     }
 
     @Test
     @DisplayName("IntegerSet.intersection() test - Intersection of two one integer length sets with non-intersecting ints")
-    void testIntersectionSingleIntegerSets() {
+    void testIntersectionSingleIntegerSets() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Intersection of two one integer length sets with non-intersecting ints");
 
@@ -367,7 +369,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.intersection() test - Intersection of two populated sets with intersecting ints")
-    void testIntersectionRandomSets() {
+    void testIntersectionRandomSets() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Intersection of two populated sets with intersecting ints");
 
@@ -380,7 +382,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.intersection() test - Intersection of two populated sets with intersecting ints")
-    void testIntersectionCommonInts() {
+    void testIntersectionCommonInts() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Intersection of two populated sets with intersecting ints");
 
@@ -398,9 +400,10 @@ class IntegerSetTest {
         test("Intersection of populated set with empty set");
 
         populateSet(intSet, 5);
-        intersectionSubTest(intSet, intSetB);
-
-        Assertions.assertEquals(intSet.toString(), "[]");
+        System.out.println("Should have no output");
+        Assertions.assertThrows(IntegerSetException.class, ()->{
+            intSet.intersect(intSetB);
+        });
     }
 
     @Test
@@ -408,14 +411,15 @@ class IntegerSetTest {
     void testIntersectionEmptyIntegerSets() {
         IntegerSet intSetB = new IntegerSet();
         test("Intersection of two empty sets");
-        intersectionSubTest(intSet, intSetB);
-
-        Assertions.assertEquals(intSet.toString(), "[]");
+        System.out.println("Should have no output");
+        Assertions.assertThrows(IntegerSetException.class, ()->{
+            intSet.intersect(intSetB);
+        });
     }
 
     @Test
     @DisplayName("IntegerSet.difference() test - Difference of two one integer length sets with intersecting ints")
-    void testDiffSingleIntegerSets() {
+    void testDiffSingleIntegerSets() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Difference of two one integer length sets with intersecting ints");
 
@@ -429,7 +433,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.difference() test - Difference of two populated sets with intersecting ints")
-    void testDiffRandomSets() {
+    void testDiffRandomSets() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Difference of two populated sets with intersecting ints");
 
@@ -442,7 +446,7 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.difference() test - Difference of two one integer length sets with intersecting ints")
-    void testDiffCommonInts() {
+    void testDiffCommonInts() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Difference of two one integer length sets with intersecting ints");
 
@@ -455,23 +459,25 @@ class IntegerSetTest {
 
     @Test
     @DisplayName("IntegerSet.difference() test - Difference of one populated set with one empty set")
-    void testDiffPopulatedUnpopulated() {
+    void testDiffPopulatedUnpopulated() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Difference of one populated set with one empty set");
         populateSet(intSet, 5);
-        diffSubTest(intSet, intSetB);
-
-        Assertions.assertEquals(intSet.toString(), "[0, 1, 2, 3, 4]");
+        System.out.println("Should have no output");
+        Assertions.assertThrows(IntegerSetException.class, ()->{
+            intSet.diff(intSetB);
+        });
     }
 
     @Test
-    @DisplayName("IntegerSet.difference() test - Difference of two empty sets")
-    void testDiffEmptyIntegerSets() {
+    @DisplayName("IntegerSet.difference() test - Difference of two empty sets, should throw Exception")
+    void testDiffEmptyIntegerSets() throws IntegerSetException {
         IntegerSet intSetB = new IntegerSet();
         test("Difference of two empty sets");
-        diffSubTest(intSet, intSetB);
-
-        Assertions.assertEquals(intSet.toString(), "[]");
+        System.out.println("Should have no output");
+        Assertions.assertThrows(IntegerSetException.class, ()->{
+            intSet.diff(intSetB);
+        });
     }
 
     @Test
