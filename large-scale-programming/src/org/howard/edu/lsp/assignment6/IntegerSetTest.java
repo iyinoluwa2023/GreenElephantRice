@@ -1,4 +1,4 @@
-package org.howard.edu.lsp.assignment4.test;
+package org.howard.edu.lsp.assignment6;
 
 import org.howard.edu.lsp.assignment4.implementation.IntegerSet;
 import org.howard.edu.lsp.assignment4.implementation.IntegerSetException;
